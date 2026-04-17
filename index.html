@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FYWS: AI Integrity Compass</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body { font-family: 'Inter', sans-serif; }
+
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+
+    </style>
+
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen flex items-center justify-center p-4">
+
+
+
+    <div id="app" class="max-w-2xl w-full">
+
+        <!-- Start Screen -->
+
+        <div id="start-screen" class="bg-white rounded-3xl shadow-xl p-8 text-center border border-slate-200">
+
+            <div class="mb-2">
+
+                <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest">FYWS Library Session 2</span>
+
+            </div>
+
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-2xl mb-6">
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.355r-.015.015V21a11.952 11.952 0 00-1.2-4.991m1.2 4.991a11.952 11.952 0 011.2-4.991m-1.2 4.991H12m0 0V21m0-9.75V12" />
+
+                </svg>
+
+            </div>
+
+            <h1 class="text-3xl font-bold mb-4 tracking-tight">The AI Integrity Compass</h1>
+
+            <p class="text-slate-600 mb-8 leading-relaxed">A specialized interactive assessment for FYWS students on the ethical and responsible use of generative AI in academia.</p>
+
+            <button onclick="quiz.start()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl transition duration-200 shadow-lg shadow-blue-200">
+
+                Begin Assessment
+
+            </button>
+
+        </div>
+
+
+
+        <!-- Quiz Screen -->
+
+        <div id="quiz-screen" class="hidden bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+
+            <div class="h-2 bg-slate-100 w-full">
+
+                <div id="progress-bar" class="h-full bg-blue-500 transition-all duration-500" style="width: 0%"></div>
+
+            </div>
+
+            <div class="p-8">
+
+                <div class="flex justify-between items-center mb-6">
+
+                    <span id="question-count" class="text-xs font-bold uppercase tracking-wider text-slate-400">Question 1 of 7</span>
+
+                    <button onclick="quiz.showHint()" class="text-blue-500 text-sm font-medium hover:underline">Need a hint?</button>
+
+                </div>
+
+                <h2 id="question-text" class="text-xl font-semibold mb-6 leading-snug"></h2>
+
+                
+
+                <div id="options-container" class="space-y-3"></div>
+
+
+
+                <div id="feedback-container" class="hidden mt-6 p-4 rounded-xl border">
+
+                    <p id="feedback-text" class="text-sm leading-relaxed"></p>
+
+                    <button id="next-btn" onclick="quiz.next()" class="mt-4 w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:bg-black transition">
+
+                        Next Question
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Result Screen -->
+
+        <div id="result-screen" class="hidden bg-white rounded-3xl shadow-xl p-10 text-center border border-slate-200">
+
+            <div id="score-circle" class="w-32 h-32 rounded-full border-8 border-blue-500 flex items-center justify-center mx-auto mb-6">
+
+                <span id="final-score" class="text-4xl font-bold">0/7</span>
+
+            </div>
+
+            <h2 id="result-title" class="text-2xl font-bold mb-3"></h2>
+
+            <p id="result-desc" class="text-slate-600 mb-8 leading-relaxed"></p>
+
+            
+
+            <div class="border-t border-slate-100 pt-6 mt-6">
+
+                <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-4">FYWS Library Session 2 Resource</p>
+
+                <button onclick="location.reload()" class="text-blue-600 hover:text-blue-800 font-medium text-sm transition">
+
+                    Restart Assessment
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        const quizData = {
+
+            questions: [
+
+                {
+
+                    q: "You’re staring at a blank screen at 2 AM. You ask a chatbot to 'write a 1,500-word essay on post-modernism.' If you turn this in as your own work, the primary ethical issue is:",
+
+                    options: [
+
+                        { text: "Academic Misrepresentation", rationale: "Presenting AI-generated content as your original thought is a breach of trust. It’s less about the tool and more about the false claim of authorship.", isCorrect: true },
+
+                        { text: "Efficient Time Management", rationale: "While it saves time, efficiency doesn't excuse bypassing the learning objectives of the assignment.", isCorrect: false },
+
+                        { text: "Ghost-botting", rationale: "Funny name, but the university still calls it academic dishonesty.", isCorrect: false },
+
+                        { text: "Creative Outsourcing", rationale: "Outsourcing your education defeats the purpose of being at university to begin with.", isCorrect: false }
+
+                    ],
+
+                    hint: "Think about who is actually earning the degree—you or the server rack in Nevada?"
+
+                },
+
+                {
+
+                    q: "In March 2026, the UK government faced a massive backlash from the creative industries regarding copyright and AI training. If you use AI to summarize a proprietary textbook, are you violating the author's rights?",
+
+                    options: [
+
+                        { text: "No, this is generally 'Fair Use' for personal study.", rationale: "Using a tool to help you comprehend material you already have access to for study is different from using AI to redistribute or profit from copyrighted work.", isCorrect: true },
+
+                        { text: "Yes, you are 'pirating' their brain.", rationale: "Summarizing is a standard study technique; the medium (AI) doesn't change the intent of personal learning.", isCorrect: false },
+
+                        { text: "Only if you don't buy the AI a coffee.", rationale: "AI models are notoriously bad at drinking liquids. It won't help your legal standing.", isCorrect: false },
+
+                        { text: "Yes, unless you write a thank-you note to the publisher.", rationale: "Politeness is great, but copyright laws are based on usage and distribution, not manners.", isCorrect: false }
+
+                    ],
+
+                    hint: "Is the summary for you to learn, or for you to sell on Etsy?"
+
+                },
+
+                {
+
+                    q: "Recent 2026 reports show that training a single massive AI model can consume as much water as the drinking needs of 12 million people. As a student, how does this affect your ethical use of AI?",
+
+                    options: [
+
+                        { text: "It encourages 'mindful prompting' to avoid unnecessary compute cycles.", rationale: "Sustainability is a pillar of AI ethics. Being intentional with your prompts reduces the environmental footprint of your digital habits.", isCorrect: true },
+
+                        { text: "It means you should stop drinking water while studying.", rationale: "Please stay hydrated. The AI's water usage is at the data center level, not your desk.", isCorrect: false },
+
+                        { text: "It has no impact since you aren't the one paying the water bill.", rationale: "Ethics involves considering the 'hidden costs' of technology, including environmental degradation.", isCorrect: false },
+
+                        { text: "It means we should only use AI when it's raining.", rationale: "A creative solution, but sadly, that's not how cloud computing infrastructure works.", isCorrect: false }
+
+                    ],
+
+                    hint: "Every prompt has a physical cost. Is 'Make this email sound slightly more like a pirate' worth 5 drops of water?"
+
+                },
+
+                {
+
+                    q: "A 2026 study found that AI image generators still struggle with 'cultural bias,' often defaulting to Western stereotypes. Why does this matter for your academic presentations?",
+
+                    options: [
+
+                        { text: "It can unintentionally spread misinformation or harmful tropes.", rationale: "Relying on AI for visuals without critical oversight can reinforce systemic biases in your work.", isCorrect: true },
+
+                        { text: "It just makes the slides look a bit boring.", rationale: "Bias is more than an aesthetic issue; it's a matter of accuracy and inclusivity.", isCorrect: false },
+
+                        { text: "Bias doesn't matter as long as the resolution is 4K.", rationale: "A high-quality image of a harmful stereotype is still a harmful stereotype.", isCorrect: false },
+
+                        { text: "It means you should only use hand-drawn stick figures.", rationale: "While safe, the goal is to use AI responsibly and critically, not to abandon it entirely.", isCorrect: false }
+
+                    ],
+
+                    hint: "AI is a mirror of the internet—and the internet isn't always fair."
+
+                },
+
+                {
+
+                    q: "According to MLA 9th Edition guidelines, how should you cite a specific chat you had with an AI tool used for brainstorming?",
+
+                    options: [
+
+                        { text: "Title the source by the prompt used and list the AI model as the container.", rationale: "MLA requires you to use the prompt as the 'Title of Source' (in quotes) and the AI tool (e.g., ChatGPT) as the 'Title of Container,' followed by the company and the date.", isCorrect: true },
+
+                        { text: "List the AI as the 'Author' of the work.", rationale: "MLA specifically states that an AI cannot be an author; you cite it as a tool or container instead.", isCorrect: false },
+
+                        { text: "You don't need to cite it if you didn't copy-paste text.", rationale: "Even if you used it for ideas or structure, acknowledging the tool is part of modern academic honesty.", isCorrect: false },
+
+                        { text: "Put 'Me and my Robot Buddy' in the bibliography.", rationale: "While adorable, this will likely lead to a very stern email from your TA.", isCorrect: false }
+
+                    ],
+
+                    hint: "Check the MLA style center—they treat the prompt like a title!"
+
+                },
+
+                {
+
+                    q: "The EU AI Act (enforced in April 2026) emphasizes 'Transparency.' If you use AI to structure your research paper, what is the most ethical way to handle this in your submission?",
+
+                    options: [
+
+                        { text: "Disclose the use of AI in your methodology or bibliography.", rationale: "Transparency is the antidote to suspicion. Being open about your process builds academic trust.", isCorrect: true },
+
+                        { text: "Don't mention it unless the Professor asks specifically.", rationale: "Omission can be seen as a lack of integrity if the tool played a significant role in the work.", isCorrect: false },
+
+                        { text: "Claim you have a very efficient research assistant named 'Hal'.", rationale: "Giving your AI a human name to hide its nature is deceptive and slightly creepy.", isCorrect: false },
+
+                        { text: "Use a second AI to hide the tracks of the first AI.", rationale: "This is an 'arms race' you will eventually lose. Honesty is much easier to maintain.", isCorrect: false }
+
+                    ],
+
+                    hint: "When in doubt, show your work (and your tools)."
+
+                },
+
+                {
+
+                    q: "A new April 2026 survey shows Gen Z is becoming more skeptical of AI's impact on critical thinking. What is a 'responsible' way to use AI without losing your own 'human edge'?",
+
+                    options: [
+
+                        { text: "Use AI for 'second-draft' polishing rather than 'first-draft' thinking.", rationale: "Doing the initial heavy lifting yourself ensures you develop the cognitive skills the degree is designed to teach.", isCorrect: true },
+
+                        { text: "Let AI do the thinking, and you do the font selection.", rationale: "A degree in 'Font Selection' isn't as valuable as one in critical analysis.", isCorrect: false },
+
+                        { text: "Use AI only for things you already know how to do perfectly.", rationale: "AI is a great learning tool for new things, provided you use it to explain, not replace, the struggle.", isCorrect: false },
+
+                        { text: "Switch to an analog typewriter and carrier pigeons.", rationale: "A bit extreme. Technology isn't the enemy; over-reliance is.", isCorrect: false }
+
+                    ],
+
+                    hint: "Is the AI the pilot, or just the co-pilot?"
+
+                }
+
+            ],
+
+            results: {
+
+                low: { title: "Analog Wanderer", desc: "You're either a bit behind on the tech curve or trying to ignore the robot in the room. Careful—using AI blindly is the quickest way to an academic intervention." },
+
+                mid: { title: "Digital Explorer", desc: "You have a good grasp of the basics, but you're still flirting with some risky habits. Remember: if the AI writes it, you're still the one who owns it." },
+
+                high: { title: "Ethics Architect", desc: "Impressive! You understand that AI is a tool, not a replacement for your brain. You use it transparently, sustainably, and with a critical eye. Your Professor would be proud." }
+
+            }
+
+        };
+
+
+
+        const quiz = {
+
+            currentIdx: 0,
+
+            score: 0,
+
+            answered: false,
+
+
+
+            start() {
+
+                document.getElementById('start-screen').classList.add('hidden');
+
+                document.getElementById('quiz-screen').classList.remove('hidden');
+
+                this.render();
+
+            },
+
+
+
+            render() {
+
+                const q = quizData.questions[this.currentIdx];
+
+                document.getElementById('question-count').innerText = `Question ${this.currentIdx + 1} of ${quizData.questions.length}`;
+
+                document.getElementById('question-text').innerText = q.q;
+
+                document.getElementById('progress-bar').style.width = `${((this.currentIdx) / quizData.questions.length) * 100}%`;
+
+                
+
+                const container = document.getElementById('options-container');
+
+                container.innerHTML = '';
+
+                this.answered = false;
+
+                document.getElementById('feedback-container').classList.add('hidden');
+
+
+
+                q.options.forEach((opt, i) => {
+
+                    const btn = document.createElement('button');
+
+                    btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition duration-150 flex items-center group";
+
+                    btn.innerHTML = `
+
+                        <span class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center mr-4 group-hover:bg-blue-500 group-hover:text-white transition text-sm font-bold">${String.fromCharCode(65 + i)}</span>
+
+                        <span class="flex-1">${opt.text}</span>
+
+                    `;
+
+                    btn.onclick = () => this.handleAnswer(opt, btn);
+
+                    container.appendChild(btn);
+
+                });
+
+            },
+
+
+
+            handleAnswer(opt, btn) {
+
+                if (this.answered) return;
+
+                this.answered = true;
+
+
+
+                if (opt.isCorrect) {
+
+                    this.score++;
+
+                    btn.classList.add('bg-emerald-50', 'border-emerald-500', 'ring-2', 'ring-emerald-100');
+
+                    btn.querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+
+                } else {
+
+                    btn.classList.add('bg-rose-50', 'border-rose-500', 'ring-2', 'ring-rose-100');
+
+                    btn.querySelector('span').classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+
+                }
+
+
+
+                const feedbackContainer = document.getElementById('feedback-container');
+
+                const feedbackText = document.getElementById('feedback-text');
+
+                const nextBtn = document.getElementById('next-btn');
+
+                
+
+                nextBtn.innerText = this.currentIdx === quizData.questions.length - 1 ? "See My Score" : "Next Question";
+
+                feedbackContainer.classList.remove('hidden');
+
+                feedbackContainer.classList.add(opt.isCorrect ? 'bg-emerald-50' : 'bg-slate-50');
+
+                feedbackContainer.classList.add(opt.isCorrect ? 'border-emerald-100' : 'border-slate-200');
+
+                feedbackText.innerHTML = `<strong>${opt.isCorrect ? 'Correct!' : 'Not quite.'}</strong> ${opt.rationale}`;
+
+            },
+
+
+
+            showHint() {
+
+                const q = quizData.questions[this.currentIdx];
+
+                const feedbackContainer = document.getElementById('feedback-container');
+
+                const feedbackText = document.getElementById('feedback-text');
+
+                feedbackContainer.classList.remove('hidden');
+
+                feedbackContainer.classList.remove('bg-emerald-50', 'border-emerald-100');
+
+                feedbackContainer.classList.add('bg-blue-50', 'border-blue-100');
+
+                feedbackText.innerHTML = `<strong>Hint:</strong> ${q.hint}`;
+
+            },
+
+
+
+            next() {
+
+                this.currentIdx++;
+
+                if (this.currentIdx < quizData.questions.length) {
+
+                    this.render();
+
+                } else {
+
+                    this.finish();
+
+                }
+
+            },
+
+
+
+            finish() {
+
+                document.getElementById('quiz-screen').classList.add('hidden');
+
+                document.getElementById('result-screen').classList.remove('hidden');
+
+                document.getElementById('final-score').innerText = `${this.score}/7`;
+
+                
+
+                let result;
+
+                if (this.score <= 2) result = quizData.results.low;
+
+                else if (this.score <= 5) result = quizData.results.mid;
+
+                else result = quizData.results.high;
+
+
+
+                document.getElementById('result-title').innerText = result.title;
+
+                document.getElementById('result-desc').innerText = result.desc;
+
+            }
+
+        };
+
+    </script>
+
+</body>
+
+</html>

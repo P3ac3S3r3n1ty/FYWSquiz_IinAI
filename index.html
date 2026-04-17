@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;FYWS: AI Integrity Compass&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-tap-highlight-color: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-slate-50 text-slate-900 min-h-screen flex items-center justify-center p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="app" class="max-w-2xl w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Start Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="start-screen" class="bg-white rounded-3xl shadow-xl p-8 text-center border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest"&gt;FYWS Library Session 2&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-2xl mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.355r-.015.015V21a11.952 11.952 0 00-1.2-4.991m1.2 4.991a11.952 11.952 0 011.2-4.991m-1.2 4.991H12m0 0V21m0-9.75V12" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl font-bold mb-4 tracking-tight"&gt;The AI Integrity Compass&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-slate-600 mb-8 leading-relaxed"&gt;A specialized interactive assessment for FYWS students on the ethical and responsible use of generative AI in academia.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="quiz.start()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl transition duration-200 shadow-lg shadow-blue-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Begin Assessment</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Quiz Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="quiz-screen" class="hidden bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="h-2 bg-slate-100 w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="progress-bar" class="h-full bg-blue-500 transition-all duration-500" style="width: 0%"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span id="question-count" class="text-xs font-bold uppercase tracking-wider text-slate-400"&gt;Question 1 of 7&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="quiz.showHint()" class="text-blue-500 text-sm font-medium hover:underline"&gt;Need a hint?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 id="question-text" class="text-xl font-semibold mb-6 leading-snug"&gt;&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="options-container" class="space-y-3"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="feedback-container" class="hidden mt-6 p-4 rounded-xl border"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p id="feedback-text" class="text-sm leading-relaxed"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="next-btn" onclick="quiz.next()" class="mt-4 w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:bg-black transition"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Next Question</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Result Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="result-screen" class="hidden bg-white rounded-3xl shadow-xl p-10 text-center border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="score-circle" class="w-32 h-32 rounded-full border-8 border-blue-500 flex items-center justify-center mx-auto mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="final-score" class="text-4xl font-bold"&gt;0/7&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 id="result-title" class="text-2xl font-bold mb-3"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="result-desc" class="text-slate-600 mb-8 leading-relaxed"&gt;&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="border-t border-slate-100 pt-6 mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-4"&gt;FYWS Library Session 2 Resource&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="location.reload()" class="text-blue-600 hover:text-blue-800 font-medium text-sm transition"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Restart Assessment</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const quizData = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questions: [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "You’re staring at a blank screen at 2 AM. You ask a chatbot to 'write a 1,500-word essay on post-modernism.' If you turn this in as your own work, the primary ethical issue is:",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Academic Misrepresentation", rationale: "Presenting AI-generated content as your original thought is a breach of trust. It’s less about the tool and more about the false claim of authorship.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Efficient Time Management", rationale: "While it saves time, efficiency doesn't excuse bypassing the learning objectives of the assignment.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Ghost-botting", rationale: "Funny name, but the university still calls it academic dishonesty.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Creative Outsourcing", rationale: "Outsourcing your education defeats the purpose of being at university to begin with.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "Think about who is actually earning the degree—you or the server rack in Nevada?"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "In March 2026, the UK government faced a massive backlash from the creative industries regarding copyright and AI training. If you use AI to summarize a proprietary textbook, are you violating the author's rights?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "No, this is generally 'Fair Use' for personal study.", rationale: "Using a tool to help you comprehend material you already have access to for study is different from using AI to redistribute or profit from copyrighted work.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Yes, you are 'pirating' their brain.", rationale: "Summarizing is a standard study technique; the medium (AI) doesn't change the intent of personal learning.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Only if you don't buy the AI a coffee.", rationale: "AI models are notoriously bad at drinking liquids. It won't help your legal standing.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Yes, unless you write a thank-you note to the publisher.", rationale: "Politeness is great, but copyright laws are based on usage and distribution, not manners.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "Is the summary for you to learn, or for you to sell on Etsy?"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "Recent 2026 reports show that training a single massive AI model can consume as much water as the drinking needs of 12 million people. As a student, how does this affect your ethical use of AI?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It encourages 'mindful prompting' to avoid unnecessary compute cycles.", rationale: "Sustainability is a pillar of AI ethics. Being intentional with your prompts reduces the environmental footprint of your digital habits.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It means you should stop drinking water while studying.", rationale: "Please stay hydrated. The AI's water usage is at the data center level, not your desk.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It has no impact since you aren't the one paying the water bill.", rationale: "Ethics involves considering the 'hidden costs' of technology, including environmental degradation.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It means we should only use AI when it's raining.", rationale: "A creative solution, but sadly, that's not how cloud computing infrastructure works.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "Every prompt has a physical cost. Is 'Make this email sound slightly more like a pirate' worth 5 drops of water?"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "A 2026 study found that AI image generators still struggle with 'cultural bias,' often defaulting to Western stereotypes. Why does this matter for your academic presentations?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It can unintentionally spread misinformation or harmful tropes.", rationale: "Relying on AI for visuals without critical oversight can reinforce systemic biases in your work.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It just makes the slides look a bit boring.", rationale: "Bias is more than an aesthetic issue; it's a matter of accuracy and inclusivity.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Bias doesn't matter as long as the resolution is 4K.", rationale: "A high-quality image of a harmful stereotype is still a harmful stereotype.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "It means you should only use hand-drawn stick figures.", rationale: "While safe, the goal is to use AI responsibly and critically, not to abandon it entirely.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "AI is a mirror of the internet—and the internet isn't always fair."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "According to MLA 9th Edition guidelines, how should you cite a specific chat you had with an AI tool used for brainstorming?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Title the source by the prompt used and list the AI model as the container.", rationale: "MLA requires you to use the prompt as the 'Title of Source' (in quotes) and the AI tool (e.g., ChatGPT) as the 'Title of Container,' followed by the company and the date.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "List the AI as the 'Author' of the work.", rationale: "MLA specifically states that an AI cannot be an author; you cite it as a tool or container instead.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "You don't need to cite it if you didn't copy-paste text.", rationale: "Even if you used it for ideas or structure, acknowledging the tool is part of modern academic honesty.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Put 'Me and my Robot Buddy' in the bibliography.", rationale: "While adorable, this will likely lead to a very stern email from your TA.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "Check the MLA style center—they treat the prompt like a title!"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "The EU AI Act (enforced in April 2026) emphasizes 'Transparency.' If you use AI to structure your research paper, what is the most ethical way to handle this in your submission?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Disclose the use of AI in your methodology or bibliography.", rationale: "Transparency is the antidote to suspicion. Being open about your process builds academic trust.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Don't mention it unless the Professor asks specifically.", rationale: "Omission can be seen as a lack of integrity if the tool played a significant role in the work.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Claim you have a very efficient research assistant named 'Hal'.", rationale: "Giving your AI a human name to hide its nature is deceptive and slightly creepy.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Use a second AI to hide the tracks of the first AI.", rationale: "This is an 'arms race' you will eventually lose. Honesty is much easier to maintain.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "When in doubt, show your work (and your tools)."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>q: "A new April 2026 survey shows Gen Z is becoming more skeptical of AI's impact on critical thinking. What is a 'responsible' way to use AI without losing your own 'human edge'?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Use AI for 'second-draft' polishing rather than 'first-draft' thinking.", rationale: "Doing the initial heavy lifting yourself ensures you develop the cognitive skills the degree is designed to teach.", isCorrect: true },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Let AI do the thinking, and you do the font selection.", rationale: "A degree in 'Font Selection' isn't as valuable as one in critical analysis.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Use AI only for things you already know how to do perfectly.", rationale: "AI is a great learning tool for new things, provided you use it to explain, not replace, the struggle.", isCorrect: false },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{ text: "Switch to an analog typewriter and carrier pigeons.", rationale: "A bit extreme. Technology isn't the enemy; over-reliance is.", isCorrect: false }</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>hint: "Is the AI the pilot, or just the co-pilot?"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>results: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>low: { title: "Analog Wanderer", desc: "You're either a bit behind on the tech curve or trying to ignore the robot in the room. Careful—using AI blindly is the quickest way to an academic intervention." },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>mid: { title: "Digital Explorer", desc: "You have a good grasp of the basics, but you're still flirting with some risky habits. Remember: if the AI writes it, you're still the one who owns it." },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>high: { title: "Ethics Architect", desc: "Impressive! You understand that AI is a tool, not a replacement for your brain. You use it transparently, sustainably, and with a critical eye. Your Professor would be proud." }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const quiz = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentIdx: 0,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>score: 0,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>answered: false,</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>start() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('start-screen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('quiz-screen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.render();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>render() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const q = quizData.questions[this.currentIdx];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('question-count').innerText = `Question ${this.currentIdx + 1} of ${quizData.questions.length}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('question-text').innerText = q.q;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('progress-bar').style.width = `${((this.currentIdx) / quizData.questions.length) * 100}%`;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const container = document.getElementById('options-container');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.answered = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('feedback-container').classList.add('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>q.options.forEach((opt, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const btn = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition duration-150 flex items-center group active:scale-95";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center mr-4 group-hover:bg-blue-500 group-hover:text-white transition text-sm font-bold"&gt;${String.fromCharCode(65 + i)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="flex-1 text-sm sm:text-base"&gt;${opt.text}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.onclick = () =&gt; this.handleAnswer(opt, btn);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>container.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>handleAnswer(opt, btn) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.answered) return;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.answered = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (opt.isCorrect) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.score++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.classList.add('bg-emerald-50', 'border-emerald-500', 'ring-2', 'ring-emerald-100');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.classList.add('bg-rose-50', 'border-rose-500', 'ring-2', 'ring-rose-100');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>btn.querySelector('span').classList.add('bg-rose-500', 'text-white', 'border-rose-500');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const feedbackContainer = document.getElementById('feedback-container');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const feedbackText = document.getElementById('feedback-text');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const nextBtn = document.getElementById('next-btn');</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>nextBtn.innerText = this.currentIdx === quizData.questions.length - 1 ? "See My Score" : "Next Question";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.add(opt.isCorrect ? 'bg-emerald-50' : 'bg-slate-50');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.add(opt.isCorrect ? 'border-emerald-100' : 'border-slate-200');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackText.innerHTML = `&lt;strong&gt;${opt.isCorrect ? 'Correct!' : 'Not quite.'}&lt;/strong&gt; ${opt.rationale}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>showHint() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const q = quizData.questions[this.currentIdx];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const feedbackContainer = document.getElementById('feedback-container');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const feedbackText = document.getElementById('feedback-text');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.remove('bg-emerald-50', 'border-emerald-100');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackContainer.classList.add('bg-blue-50', 'border-blue-100');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackText.innerHTML = `&lt;strong&gt;Hint:&lt;/strong&gt; ${q.hint}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>next() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>this.currentIdx++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.currentIdx &lt; quizData.questions.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.render();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.finish();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>finish() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('quiz-screen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('result-screen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('final-score').innerText = `${this.score}/7`;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>let result;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (this.score &lt;= 2) result = quizData.results.low;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else if (this.score &lt;= 5) result = quizData.results.mid;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else result = quizData.results.high;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('result-title').innerText = result.title;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('result-desc').innerText = result.desc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
